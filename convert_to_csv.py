@@ -89,6 +89,6 @@ with open (r"CK_DATA.csv","w") as csvfile:
     writer.writerow(['emotion','imgPixels'])
     for i in range(len(image_labels)):
         data_list = list(image_data[i])
-        l = " ".join(str(x) for x in data_list)
-        b = np.hstack([image_labels[i], l])
+        label = " ".join(str(x) for x in data_list)
+        row = np.hstack([image_labels[i], l])
         writer.writerow(b)
