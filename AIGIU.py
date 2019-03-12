@@ -51,33 +51,30 @@ predictions = model.predict(img_pix)
 
 max_index = np.argmax(predictions[0])
 
-print(predictions)
-
 top_pred = np.amax(predictions)
 
 rec = (emotions[max_index])
 
-print("predicted " + rec + " " + "{:.2%}".format(top_pred))
+print("Model Predicted " + rec + " " + "{:.2%}".format(top_pred))
 
-print("############################")
+print("##############SUMMARY###############")
 
 newList =[]
 
-newList.append(predictions[0][:1])
-newList.append(predictions[0][1:2])
-newList.append(predictions[0][2:3])
-newList.append(predictions[0][3:4])
-newList.append(predictions[0][4:5])
-newList.append(predictions[0][5:6])
-newList.append(predictions[0][6:])
+for i in range(7):
+
+    if i < 1:
+        newList.append('%f' % predictions[0][:i+1])
+    elif i >= 1 and i < 6:
+        newList.append('%f' % predictions[0][i:i+1])
+    elif i == 6:
+        newList.append('%f' % predictions[0][i:])
 
 
-for l in newList:
-    print(l)
+newList = [float(i) for i in newList]
 
-#predictions = model.predict(text[0])
-#max_index = np.argmax(predictions[0])
-#emotion = emotions[max_index]
+for i in range(7):
 
-#print(np.amax(predictions)*100)
+    print(emotions[i] + ": " + "{:.2%}".format(newList[i]))
+
 
