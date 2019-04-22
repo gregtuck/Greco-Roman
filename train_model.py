@@ -84,19 +84,7 @@ model.add(Dense(7, activation='softmax'))
 
 model.compile(loss='categorical_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
 
-datagen = ImageDataGenerator(
-                            featurewise_center=True,
-                            featurewise_std_normalization=True,
-                            rotation_range=20,
-                            width_shift_range=0.2,
-                            height_shift_range=0.2,
-                            horizontal_flip=True)
-datagen.fit(train_X)
-
-model.fit_generator(datagen.flow(train_X, train_Y, batch_size=10),steps_per_epoch=len(train_X), epochs=20)
-
-
-model.fit(train_X, train_Y, batch_size=10, epochs=80)
+model.fit(train_X, train_Y, batch_size=10, epochs=20)
 
 train_score = model.evaluate(train_X, train_Y, batch_size=10)
 print('Train Loss', train_score[0])
@@ -107,7 +95,7 @@ print('Test Score', test_score[0])
 print('Test accuracy', 100*test_score[1])
 
 
-model.save('finalModel2.h5')
+model.save('modelA.h5')
 
 model.summary()
 

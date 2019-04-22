@@ -9,7 +9,7 @@ from keras.preprocessing import image
 root = Tk()
 
 from keras.models import load_model
-model = load_model('my_newm.h5')
+model = load_model('modelB.h5')
 
 emotions = ('angry', 'disgust', 'fear', 'happy', 'neutral', 'sad', 'surprise')
 
